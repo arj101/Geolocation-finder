@@ -1,0 +1,24 @@
+{
+  "name": "geolocation-finder",
+  "version": "1.0.0",
+  "description": "A simple geolocation finder.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "geolocation",
+    "location",
+    "finder",
+    "geolocation",
+    "finder",
+    "finder",
+    "location"
+  ],
+  "author": "Arjunan M. R. || Diode ;)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
