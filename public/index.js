@@ -52,6 +52,6 @@ async function sendLocation() {
       alert("I think, your location might not be recieved correctly. ◉_◉");
     }
   } else {
-    alert("Loaction data not found! ◔̯◔");
+    alert("Location data not found! ◔̯◔");
   }
 }
