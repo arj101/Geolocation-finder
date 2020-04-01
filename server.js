@@ -12,6 +12,9 @@ app.post("/diode", (request, response) => {
   console.log("I got a request!");
   const data = request.body;
   console.log(data);
-
-  response.send("Hello world");
+  response.json({
+    status: "success",
+    latitude: data.latitude,
+    longitude: data.longitude
+  });
 });
