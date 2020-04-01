@@ -9,6 +9,9 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.post("/diode", (request, response) => {
+  console.log("I got a request!");
   const data = request.body;
   console.log(data);
+
+  response.send("Hello world");
 });
