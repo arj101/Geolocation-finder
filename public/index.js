@@ -10,8 +10,8 @@ if ("geolocation" in navigator) {
     async pos => {
       const lat = pos.coords.latitude;
       const lng = pos.coords.longitude;
-      document.getElementById("lat").textContent = lat.toFixed(3);
-      document.getElementById("lng").textContent = lng.toFixed(3);
+      document.getElementById("lat").textContent = lat.toFixed(3) + "°";
+      document.getElementById("lng").textContent = lng.toFixed(3) + "°";
       const pos_data = { lat, lng };
       const post_options = {
         method: "POST",
