@@ -10,7 +10,7 @@ app.listen(port, () => {
 app.use(express.static("public"));
 app.use(express.json());
 
-const database = new Datastore({ filename: ".data/database.db" });
+const database = new Datastore({ filename: "database.db" });
 database.loadDatabase();
 
 app.get("/api", (request, response) => {

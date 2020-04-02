@@ -137,11 +137,13 @@
             mood.className = "mood";
             const dateString = document.createElement("div");
             dateString.className = "dateString";
+            const image64 = document.createElement("img");
+            image64.src = item.image64;
             geo.textContent = `Latitude: ${item.latitude} Longitude: ${item.longitude}`;
             mood.textContent = `Mood : ${item.mood}`;
             dateString.textContent = `Time: ${new Date(item.timestamp)}`;
 
-            root.append(geo, mood, dateString);
+            root.append(geo, mood, dateString,image64);
             data_container.append(root);
           }
         } else {
