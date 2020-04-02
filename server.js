@@ -10,7 +10,7 @@ app.listen(port, () => {
 app.use(express.static("public"));
 app.use(express.json());
 
-const database = new Datastore("database.db");
+const database = new Datastore({ filename: ".data/database.db" });
 database.loadDatabase();
 
 app.get("/api", (request, response) => {
@@ -26,6 +26,19 @@ app.get("/api", (request, response) => {
   });
 });
 
+app.get("/clear", (requset, response) => {
+  console.log("I got a clear request :|");
+  database.remove({}, { multi: true }, (err, success) => {
+    if (success) {
+      console.log("Database clear");
+      response.json({ status: "cleared", timestamp: Date.now() });
+    } else if (err) {
+      console.log(err);
+      response.end();
+    }
+  });
+});
+
 app.post("/api", (request, response) => {
   console.log("I got a location!");
   const data = request.body;
@@ -33,6 +46,7 @@ app.post("/api", (request, response) => {
   data.timestamp = timestamp;
   database.insert(data);
   console.log(data);
+
   response.json({
     status: "success",
     latitude: data.latitude,

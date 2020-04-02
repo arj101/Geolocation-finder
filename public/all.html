@@ -8,21 +8,30 @@
   <body>
     <h1>All the locations in my database!</h1>
     <div id="links">
-      <a id="allHtmlLink" href="all.html">List</a>
+      <a href="all.html">List</a>
       <p>|</p>
       <a href="index.html">Enter</a>
     </div>
+
+    <button id="clear">Clear</button>
+
     <style>
       body {
         background-color: #ededed;
       }
       h1 {
-        position: absolute;
+        padding: 0;
+        margin: 0;
+        border: 0;
         font-family: "Open Sans", sans-serif;
+        position: absolute;
         top: 3vh;
         left: 2vw;
       }
       #links {
+        padding: 0;
+        margin: 0;
+        border: 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -55,6 +64,25 @@
       .mood {
         margin-bottom: 0.5rem;
       }
+
+      #clear {
+        position: fixed;
+        bottom: 4vh;
+        left: 1vw;
+        border-style: solid;
+        border-color: #000000;
+        background-color: transparent;
+        border-radius: 0.5rem;
+        outline: none;
+        transition: all 0.2s ease;
+        z-index: 2;
+      }
+      #clear:hover {
+        background-color: #00ff1a40;
+      }
+      #clear:active {
+        bottom: 3.5vh;
+      }
       #empty_txt {
         color: #575757a4;
         font-family: "Open Sans", sans-serif;
@@ -68,11 +96,30 @@
       @media only screen and (max-width: 800px) {
         #empty_txt {
           left: 2vw;
-          font-size: 3rem;
+          font-size: 2rem;
+        }
+        #clear {
+          bottom: 2vh;
+          left: 3vw;
+        }
+        .container {
+          position: relative;
+          left: -0.8vw;
+        }
+        #clear:active {
+          bottom: 1vh;
+        }
+        h1 {
+          top: 1vh;
+        }
+        #links {
+          top: 11vh;
         }
       }
     </style>
     <script>
+      document.getElementById("clear").addEventListener("click", clearDatabase);
+
       getData();
 
       async function getData() {
@@ -105,6 +152,19 @@
         }
         document.body.append(data_container);
         console.log(data);
+      }
+
+      function removeData_inPage() {
+        document.getElementById("data_container").remove();
+        console.log("Removed!");
+      }
+
+      async function clearDatabase() {
+        const response = await fetch("/clear");
+        const response_json = await response.json();
+        console.log(response_json);
+        removeData_inPage();
+        getData();
       }
     </script>
   </body>
