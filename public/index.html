@@ -20,6 +20,7 @@
     <h3 id="lng_cont">
       Longitude: <span id="lng"><i>loading...</i></span>
     </h3>
+    <input type="text" id="mood" />
     <button id="submit_button">Submit!</button>
 
     <p id="about">
@@ -29,6 +30,8 @@
       (That's where this website is hosted from).<br />
       <i>We will not use your location for any purposes!</i>
     </p>
+
+    <a id="allHtmlLink" href="all.html">View all data!</a>
 
     <style>
       body {
@@ -63,7 +66,7 @@
       }
       #submit_button {
         position: absolute;
-        top: 32vh;
+        top: 34vh;
         left: 2vw;
         width: 10vw;
         height: 5vh;
@@ -82,7 +85,7 @@
       #submit_button:active {
         background-color: #7700ff;
         border-color: #7700ff;
-        top: 32.5vh;
+        top: 35.5vh;
       }
       #square {
         position: absolute;
@@ -99,6 +102,30 @@
         color: #8800ff;
         font-family: sans-serif;
       }
+      #allHtmlLink {
+        position: absolute;
+        left: 2vw;
+        top: 55vh;
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.2rem;
+        color: #ff0000;
+      }
+
+      #mood {
+        border-radius: 0.3rem;
+        border-style: solid;
+        border-color: #5a5a5a;
+        border-width: 0.12rem;
+        margin: 0;
+        padding: 0;
+        padding-left: 0.4rem;
+        position: absolute;
+        top: 30vh;
+        left: 2vw;
+        width: 20vw;
+        height: 3vh;
+      }
+
       @media only screen and (max-width: 780px) {
         #submit_button {
           width: 20vw;

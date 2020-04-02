@@ -4,7 +4,7 @@ const location_options = {
   maximumAge: 0
 };
 
-const pos_data = { latitude: undefined, longitude: undefined };
+const pos_data = { latitude: undefined, longitude: undefined, mood: undefined };
 const post_options = {
   method: "POST",
   headers: {
@@ -37,19 +37,26 @@ document
   .addEventListener("click", sendLocation);
 
 async function sendLocation() {
+  const mood_inputVal = document.getElementById("mood").value;
+  pos_data.mood = mood_inputVal;
   if (pos_data.latitude && pos_data.longitude) {
-    post_options.body = JSON.stringify(pos_data);
-    const response = await fetch("/diode", post_options);
-    const response_json = await response.json();
-    console.log(response_json);
-    if (
-      response_json.status === "success" &&
-      response_json.latitude === pos_data.latitude &&
-      response_json.longitude === pos_data.longitude
-    ) {
-      alert("Succesfully sent your location!  ◔ ⌣ ◔");
+    if (pos_data.mood) {
+      post_options.body = JSON.stringify(pos_data);
+      const response = await fetch("/api", post_options);
+      const response_json = await response.json();
+      console.log(response_json);
+      if (
+        response_json.status === "success" &&
+        response_json.latitude === pos_data.latitude &&
+        response_json.longitude === pos_data.longitude &&
+        response_json.mood === pos_data.mood
+      ) {
+        alert("Succesfully sent your location!  ◔ ⌣ ◔");
+      } else {
+        alert("I think, your location might not be recieved correctly. ◉_◉");
+      }
     } else {
-      alert("I think, your location might not be recieved correctly. ◉_◉");
+      alert("Write something in the input field ;)");
     }
   } else {
     alert("Location data not found! ◔̯◔");
