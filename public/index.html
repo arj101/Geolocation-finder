@@ -12,6 +12,8 @@
       rel="stylesheet"
     />
 
+    <script src="./libraries/p5.min.js"></script>
+
     <title>Location Finder</title>
   </head>
   <body id="view">
@@ -28,14 +30,6 @@
 
     <input type="text" id="mood" placeholder="What is your mood? ;) 😜" />
     <button id="submit_button">Submit!</button>
-
-    <p id="about">
-      Pressing the button above will send your <br />
-      location data to
-      <a href="https://glitch.com/">glitch's</a> server<br />
-      (That's where this website is hosted from).<br />
-      <i>We will not use your location for any purposes!</i>
-    </p>
 
     <div id="links">
       <a id="allHtmlLink" href="all.html">List</a>
@@ -116,14 +110,6 @@
         width: 10vw;
         background-color: #ff0037;
       }
-      #about {
-        font-size: 0.8rem;
-        position: absolute;
-        top: 43vh;
-        left: 2vw;
-        color: #8800ff;
-        font-family: sans-serif;
-      }
 
       #mood {
         border-radius: 0.3rem;
@@ -139,17 +125,11 @@
         width: 20vw;
         height: 3vh;
       }
-      #p5_Canvas {
-        position: absolute;
-        top: 55vh;
-        left: 2vw;
-        z-index: 3;
-      }
+
       #video {
         position: absolute;
-        top: 57vh;
+        top: 45vh;
         left: 2vw;
-        box-shadow: 4px 4px 5px #00000080;
         border-radius: 0.2rem;
       }
 

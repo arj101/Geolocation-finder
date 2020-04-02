@@ -79,6 +79,6 @@ function setup() {
 
   noCanvas();
   const video = createCapture(VIDEO);
-  video.size(320, 240);
+  video.size(560, 420);
   video.id("video");
 }
