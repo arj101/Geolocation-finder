@@ -7,11 +7,103 @@
   </head>
   <body>
     <h1>All the locations in my database!</h1>
+    <div id="links">
+      <a id="allHtmlLink" href="all.html">List</a>
+      <p>|</p>
+      <a href="index.html">Enter</a>
+    </div>
+    <style>
+      body {
+        background-color: #ededed;
+      }
+      h1 {
+        position: absolute;
+        font-family: "Open Sans", sans-serif;
+        top: 3vh;
+        left: 2vw;
+      }
+      #links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: sans-serif;
+        width: 5vw;
+        position: absolute;
+        top: 10vh;
+        left: 2vw;
+      }
+
+      .container {
+        margin-bottom: 2rem;
+        background-color: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 4px 1px 25px #00000048;
+        padding: 2rem;
+      }
+      #data_container {
+        position: absolute;
+        font-family: sans-serif;
+        top: 20vh;
+        left: 2vw;
+        color: #444444;
+        font-weight: 700;
+      }
+      .geo {
+        margin-bottom: 0.5rem;
+      }
+      .mood {
+        margin-bottom: 0.5rem;
+      }
+      #empty_txt {
+        color: #575757a4;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        font-size: 4rem;
+        position: absolute;
+        top: 40vh;
+        left: 5vw;
+      }
+
+      @media only screen and (max-width: 800px) {
+        #empty_txt {
+          left: 2vw;
+          font-size: 3rem;
+        }
+      }
+    </style>
     <script>
       getData();
+
       async function getData() {
         const response = await fetch("/api");
         const data = await response.json();
+        const data_container = document.createElement("div");
+        data_container.id = "data_container";
+        if (data.length > 0) {
+          for (let item of data) {
+            const root = document.createElement("div");
+            root.className = "container";
+            const geo = document.createElement("div");
+            geo.className = "geo";
+            const mood = document.createElement("div");
+            mood.className = "mood";
+            const dateString = document.createElement("div");
+            dateString.className = "dateString";
+            geo.textContent = `Latitude: ${item.latitude} Longitude: ${item.longitude}`;
+            mood.textContent = `Mood : ${item.mood}`;
+            dateString.textContent = `Time: ${new Date(item.timestamp)}`;
+
+            root.append(geo, mood, dateString);
+            data_container.append(root);
+          }
+        } else {
+          const empty_txt = document.createElement("p");
+          empty_txt.textContent = "Nothing here! ¯\_(ツ)_/¯";
+          empty_txt.id = "empty_txt";
+          document.body.append(empty_txt);
+        }
+        document.body.append(data_container);
         console.log(data);
       }
     </script>

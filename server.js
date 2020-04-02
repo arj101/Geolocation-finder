@@ -14,7 +14,16 @@ const database = new Datastore("database.db");
 database.loadDatabase();
 
 app.get("/api", (request, response) => {
-  response.send({ diode: 123456789 });
+  database.find({}, (err, docs) => {
+    if (docs) {
+      response.json(docs);
+      console.log("Succesfully sent data to client!");
+    } else if (err) {
+      response.end();
+      console.log("Error occured while sending data!");
+      return;
+    }
+  });
 });
 
 app.post("/api", (request, response) => {
