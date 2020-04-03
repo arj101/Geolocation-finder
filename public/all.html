@@ -64,6 +64,9 @@
       .mood {
         margin-bottom: 0.5rem;
       }
+      .dateString {
+        margin-bottom: 1rem;
+      }
 
       #clear {
         position: fixed;
@@ -143,7 +146,7 @@
             mood.textContent = `Mood : ${item.mood}`;
             dateString.textContent = `Time: ${new Date(item.timestamp)}`;
 
-            root.append(geo, mood, dateString,image64);
+            root.append(geo, mood, dateString, image64);
             data_container.append(root);
           }
         } else {

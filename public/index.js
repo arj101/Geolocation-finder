@@ -1,5 +1,4 @@
 function setup() {
-
   noCanvas();
   const video = createCapture(VIDEO);
   video.size(480, 360);
@@ -15,7 +14,7 @@ function setup() {
     latitude: undefined,
     longitude: undefined,
     mood: undefined,
-    image64:undefined
+    image64: undefined
   };
   const post_options = {
     method: "POST",
@@ -58,16 +57,15 @@ function setup() {
   async function sendLocation() {
     const mood_inputVal = document.getElementById("mood").value;
     video.loadPixels();
-    const image64 = video.canvas.toDataURL('image/jpeg',0.5);
+    const image64 = video.canvas.toDataURL("image/jpeg", 0.88);
     console.log(pos_data);
-     pos_data.image64 = image64;
-  
+    pos_data.image64 = image64;
+
     if (pos_data.latitude && pos_data.longitude) {
       if (mood_inputVal) {
-          pos_data.mood = mood_inputVal;
+        pos_data.mood = mood_inputVal;
         post_options.body = JSON.stringify(pos_data);
         const response = await fetch("/api", post_options);
-        
 
         const response_json = await response.json();
         console.log(response_json);
@@ -90,6 +88,4 @@ function setup() {
       alert("Location data not found! ◔̯◔ 😑");
     }
   }
-
- 
 }

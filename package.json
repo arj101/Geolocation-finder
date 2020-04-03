@@ -19,6 +19,7 @@
   "author": "Arjunan M. R. || Diode ;)",
   "license": "ISC",
   "dependencies": {
+    "base64-to-image": "^1.0.2",
     "express": "^4.17.1",
     "nedb": "^1.8.0"
   }
